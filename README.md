@@ -31,14 +31,14 @@ Alternatively you can initialize a SwitchToggle with default settings.
 
 <p align=“center”>
 There are 5 different Transition Effects that can be used, default(NONE), POP, COMPRESS, ROTATE, BUZZ.
+</p>
 
 #BUZZ
-</p>
 
 <br>
 <br>
 <p align=“center”>
-<img src = “http://sotd.us/matthewashley/VTFXcontrols/BUZZ.mov”/>
+![Demo](http://sotd.us/matthewashley/VTFXcontrols/BUZZ.mov)
 </p>
 <br>
 <br>
