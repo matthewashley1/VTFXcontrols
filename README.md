@@ -33,25 +33,23 @@ Alternatively you can initialize a SwitchToggle with default settings.
 There are 5 different Transition Effects that can be used, default(NONE), POP, COMPRESS, ROTATE, BUZZ.
 </p>
 
-### NONE
+### <em>NONE</em>
 
 ![Demo](http://sotd.us/matthewashley/VTFXcontrols/NONE.gif)
 
-### BUZZ
-
-![Demo](http://sotd.us/matthewashley/VTFXcontrols/BUZZ.gif)
-
-### COMPRESS
-
-![Demo](http://sotd.us/matthewashley/VTFXcontrols/COMPRESS.gif)
-
-### POP
+### <em>POP</em>
 
 ![Demo](http://sotd.us/matthewashley/VTFXcontrols/POP.gif)
 
-### ROTATE
+### <em>COMPRESS</em>
+
+![Demo](http://sotd.us/matthewashley/VTFXcontrols/COMPRESS.gif)
+
+### <em>ROTATE</em>
 
 ![Demo](http://sotd.us/matthewashley/VTFXcontrols/ROTATE.gif)
 
+### <em>BUZZ</em>
 
+![Demo](http://sotd.us/matthewashley/VTFXcontrols/BUZZ.gif)
 
