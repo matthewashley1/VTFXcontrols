@@ -38,7 +38,7 @@ There are 5 different Transition Effects that can be used, default(NONE), POP, C
 <br>
 <br>
 <p align=“center”>
-![Demo](http://sotd.us/matthewashley/VTFXcontrols/BUZZ.mov)
+<img src = “http://sotd.us/matthewashley/VTFXcontrols/BUZZ.gif”/>
 </p>
 <br>
 <br>
