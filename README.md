@@ -19,4 +19,28 @@ To use, create an instance of <em>SwitchToggle</em> and define its color, text, 
 Color.web("#aeb0b2"), TransitionType.BUZZ);
 ```
 
+<p align=“center”>
+Alternatively you can initialize a SwitchToggle with default settings. 
+</p>
+
+```java
+	SwitchToggle switchToggle = new SwitchToggle();
+```
+
+### Different Transition Effects
+
+<p align=“center”>
+There are 5 different Transition Effects that can be used, default(NONE), POP, COMPRESS, ROTATE, BUZZ.
+
+#BUZZ
+</p>
+
+<br>
+<br>
+<p align=“center”>
+<img src = “http://sotd.us/matthewashley/VTFXcontrols/BUZZ.mov”/>
+</p>
+<br>
+<br>
+
 
