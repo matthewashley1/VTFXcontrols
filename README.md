@@ -37,12 +37,17 @@ There are 5 different Transition Effects that can be used, default(NONE), POP, C
 
 ![Demo](http://sotd.us/matthewashley/VTFXcontrols/BUZZ.gif)
 
-<br>
-<br>
-<p align=“center”>
-<img src = “http://sotd.us/matthewashley/VTFXcontrols/BUZZ.gif”/>
-</p>
-<br>
-<br>
+### COMPRESS
+
+![Demo](http://sotd.us/matthewashley/VTFXcontrols/COMPRESS.gif)
+
+### POP
+
+![Demo](http://sotd.us/matthewashley/VTFXcontrols/POP.gif)
+
+### ROTATE
+
+![Demo](http://sotd.us/matthewashley/VTFXcontrols/ROTATE.gif)
+
 
 
