@@ -35,6 +35,8 @@ There are 5 different Transition Effects that can be used, default(NONE), POP, C
 
 ### BUZZ
 
+![Demo](http://sotd.us/matthewashley/VTFXcontrols/BUZZ.gif)
+
 <br>
 <br>
 <p align=“center”>
