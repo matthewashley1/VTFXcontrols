@@ -15,7 +15,8 @@ To use, create an instance of <em>SwitchToggle</em> and define its color, text, 
 </p>
 
 ```java
-	SwitchToggle enable = new SwitchToggle("ON", Color.web("#a7ef88"), "OFF", Color.web("#aeb0b2"), TransitionType.BUZZ);
+	SwitchToggle switchToggle = new SwitchToggle("ON", Color.web("#a7ef88"), "OFF", 
+Color.web("#aeb0b2"), TransitionType.BUZZ);
 ```
 
 
