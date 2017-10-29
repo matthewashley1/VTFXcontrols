@@ -6,7 +6,7 @@ SwitchToggle allows for customizing color, text, as-well-as Transition Effects.
 
 ___
 
-### Creating a new SwitchToggle
+### Creating A New SwitchToggle
 
 
 <p align=“center”>
@@ -55,7 +55,7 @@ There are 5 different Transition Effects that can be used, default(NONE), POP, C
 ![Demo](http://sotd.us/matthewashley/VTFXcontrols/BUZZ.gif)
 
 
-### Other SwitchToggle functionality
+### Other SwitchToggle Functionality
 
 <p align=“center”>
 To evaluate the state of the SwitchToggle with a change Listener use <em>switchOnProperty()</em>.
