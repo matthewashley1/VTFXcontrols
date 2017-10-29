@@ -67,6 +67,23 @@ To evaluate the state of the SwitchToggle with a change Listener use <em>switchO
 	switchToggle.switchOnProperty().addListener((observable, oldValue, newValue) -> {};
 ```
 
+<p align=“center”>
+To return the state of the switchToggle as boolean use <em>isSelected()</em>.
+<br>
+</p>
+
+```java
+	boolean state = switchToggle.isSelected();
+```
+
+<p align=“center”>
+To set the state of the switchToggle to a desired state use <em>setSelected()</em>.
+<br>
+</p>
+
+```java
+	switchToggle.setSelected(true);
+```
 
 
 
