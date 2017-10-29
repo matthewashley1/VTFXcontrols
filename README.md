@@ -27,6 +27,8 @@ Alternatively you can initialize a SwitchToggle with default settings.
 	SwitchToggle switchToggle = new SwitchToggle();
 ```
 
+
+
 ### Different Transition Effects
 
 <p align=“center”>
@@ -52,4 +54,20 @@ There are 5 different Transition Effects that can be used, default(NONE), POP, C
 ### <em>BUZZ</em>
 
 ![Demo](http://sotd.us/matthewashley/VTFXcontrols/BUZZ.gif)
+
+
+### Other SwitchToggle functionality
+
+<p align=“center”>
+To evaluate the state of the SwitchToggle with a change Listener use <em>switchOnProperty()</em>.
+<br>
+</p>
+
+```java
+	switchToggle.switchOnProperty().addListener((observable, oldValue, newValue) -> {};
+```
+
+
+
+
 
