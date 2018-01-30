@@ -76,13 +76,68 @@ To return the state of the switchToggle as boolean use <em>isSelected()</em>.
 ```
 
 <p align=“center”>
-To set the state of the switchToggle to a desired state use <em>setSelected()</em>.
+To set the state of the switchToggle use <em>setSelected()</em>.
 <br>
 </p>
 
 ```java
 	switchToggle.setSelected(true);
 ```
+
+<p align=“center”>
+To set the true state color of the switchToggle use <em>setTrueColored()</em>.
+<br>
+</p>
+
+```java
+	switchToggle.setTrueColored(Color.RED);
+```
+
+<p align=“center”>
+To set the false state color of the switchToggle use <em>setFalseColored()</em>.
+<br>
+</p>
+
+```java
+	switchToggle.setFalseColored(Color.YELLOW);
+```
+
+<p align=“center”>
+To set the switch color of the switchToggle use <em>setSwitchColored()</em>.
+<br>
+</p>
+
+```java
+	switchToggle.setSwitchColored(Color.BLACK);
+```
+
+<p align=“center”>
+To set the true state text of the switchToggle use <em>setTrueText()</em>.
+<br>
+</p>
+
+```java
+	switchToggle.setTrueText("TRUE");
+```
+
+<p align=“center”>
+To set the false state text of the switchToggle use <em>setFalseText()</em>.
+<br>
+</p>
+
+```java
+	switchToggle.setFalseText("FALSE");
+```
+
+<p align=“center”>
+To set the Transition type of the switchToggle use <em>setTransitionType()</em>.
+<br>
+</p>
+
+```java
+	switchToggle.setTransitionType(TransitionType.COMPRESS);
+```
+
 
 
 
