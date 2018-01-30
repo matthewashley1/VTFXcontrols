@@ -13,6 +13,7 @@ package VTFXcontrols;
  *
  * @author Matthew Ashley
  * @since Version 0.0.0.1
+ * @version 1.0.0.3
  *
  */
 
