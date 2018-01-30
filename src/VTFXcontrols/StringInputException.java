@@ -1,5 +1,5 @@
-/**
- * Created by Vern Technologies on 7/23/17. For package VTFXcontrols.
+/*
+  Created by Vern Technologies on 7/23/17. For package VTFXcontrols.
  */
 
 package VTFXcontrols;

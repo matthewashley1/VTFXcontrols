@@ -1,5 +1,5 @@
-/**
- * Created by Vern Technologies on 7/19/17. For package VTFXcontrols.
+/*
+  Created by Vern Technologies on 7/19/17. For package VTFXcontrols.
  */
 
 package VTFXcontrols;
@@ -31,26 +31,25 @@ import java.util.TimerTask;
  *
  * @author Matthew Ashley
  * @since Version 0.0.0.1
+ * @version 0.0.0.3
  *
  */
 
 public class SwitchToggle extends HBox {
 
-    private final Label defaultLabel = new Label("OFF");
-    private  Label label = new Label();
-    private  Button button = new Button();
-    private SimpleBooleanProperty switchedOn = new SimpleBooleanProperty(false);
+    private final Label label = new Label();
+    private final Button button = new Button();
+    private final SimpleBooleanProperty switchedOn = new SimpleBooleanProperty(false);
     private boolean selected;
-    private boolean toggleSwitch = false;
-    private double initWidth;
-    private String onState;
-    private String offState;
-    private Text text;
-
-    Color falseColored;
-    Color trueColored;
-
-    Timer timer = new Timer();
+    private Double switchWidth;
+    private String onState = "ON";
+    private String offState = "OFF";
+    private Color falseColored = Color.web("#aeb0b2");
+    private Color trueColored = Color.web("#a7ef88");
+    private Text textTrue;
+    private Text textFalse;
+    private TransitionType transType = TransitionType.NONE;
+    private final Timer timer = new Timer();
 
     /**
      * @return Returns the state of the Toggle Switch for Listeners.
@@ -67,49 +66,115 @@ public class SwitchToggle extends HBox {
      * @param state contains the inputted boolean value.
      */
     public void setSelected(boolean state) {
-        if (toggleSwitch) {
-            if (state) {
-                label.setText(onState);
-                setStyle(String.format("-fx-background-color: #%s ; -fx-background-radius: 20;", colorToHex(trueColored)));
-                label.toFront();
-            } else {
-                label.setText(offState);
-                setStyle(String.format("-fx-background-color: #%s ; -fx-background-radius: 20;", colorToHex(falseColored)));
-                button.toFront();
-            }
+        if (state) {
+            label.setText(onState);
+            setStyle(String.format("-fx-background-color: #%s ; -fx-background-radius: 20;", colorToHex(trueColored)));
+            label.setPrefWidth(textTrue.getLayoutBounds().getWidth());
+            button.setPrefWidth(textFalse.getLayoutBounds().getWidth());
+            label.toFront();
         } else {
-            if (state) {
-                label.setText("ON");
-                setStyle("-fx-background-color: #a7ef88; -fx-background-radius: 20;");
-                label.toFront();
-            } else {
-                label.setText("OFF");
-                setStyle("-fx-background-color: #aeb0b2; -fx-background-radius: 20;");
-                button.toFront();
-            }
+            label.setText(offState);
+            setStyle(String.format("-fx-background-color: #%s ; -fx-background-radius: 20;", colorToHex(falseColored)));
+            label.setPrefWidth(textFalse.getLayoutBounds().getWidth());
+            button.setPrefWidth(textTrue.getLayoutBounds().getWidth());
+            button.toFront();
         }
     }
+
+    /**
+     * Sets the true state of the Toggle Switch to the specified color.
+     * @param trueColored contains the inputted color value.
+     */
+    public void setTrueColored(Color trueColored) {
+        this.trueColored = trueColored;
+        if (isSelected()) {
+            setStyle(String.format("-fx-background-color: #%s; -fx-background-radius: 20;", colorToHex(trueColored)));
+        }
+    }
+
+    /**
+     * Sets the false state of the Toggle Switch the specified color.
+     * @param falseColored contains the inputted color value.
+     */
+    public void setFalseColored(Color falseColored) {
+        this.falseColored = falseColored;
+        if (!isSelected()) {
+            setStyle(String.format("-fx-background-color: #%s; -fx-background-radius: 20;", colorToHex(falseColored)));
+        }
+    }
+
+    /**
+     * Sets the switch color of the Toggle Switch to the specified color.
+     * @param switchColor contains the inputted color value.
+     */
+    public void setSwitchColor(Color switchColor) {
+        button.setStyle(String.format("-fx-background-color: #%s; -fx-background-radius: 20;", colorToHex(switchColor)));
+    }
+
+    /**
+     * Sets the Toggle Switch true state text to the specified String value.
+     * @param trueText contains the inputted String value.
+     */
+    public void setTrueText(String trueText) {
+        this.onState = trueText;
+        initText(onState, offState);
+        if (isSelected()) {
+            label.setText(onState);
+            setSelected(true);
+            label.setPrefWidth(textTrue.getLayoutBounds().getWidth());
+            button.setPrefWidth(textFalse.getLayoutBounds().getWidth());
+        }
+        this.switchWidth = (textTrue.getLayoutBounds().getWidth() + textFalse.getLayoutBounds().getWidth());
+    }
+
+    /**
+     * Sets the Toggle Switch false state text to the specified String value.
+     * @param falseText contains the inputted String value.
+     */
+    public void setFalseText(String falseText) {
+        this.offState = falseText;
+        initText(onState, offState);
+        if (!isSelected()) {
+            label.setText(offState);
+            setSelected(false);
+            label.setPrefWidth(textFalse.getLayoutBounds().getWidth());
+            button.setPrefWidth(textTrue.getLayoutBounds().getWidth());
+        }
+        this.switchWidth = (textTrue.getLayoutBounds().getWidth() + textFalse.getLayoutBounds().getWidth());
+    }
+
+    /**
+     * Sets the transition type of the Toggle Switch to the specified transition type.
+     * @param transitionType contains the inputted TransitionType.
+     */
+    public void setTransitionType(TransitionType transitionType) {this.transType = transitionType;}
 
     /**
      * Builds a default Toggle Switch.
      */
     public SwitchToggle() {
-        bindProperties();
-        setStyled();
-        button.setOnAction((e) -> switchedOn.set(!switchedOn.get()));
-        defaultLabel.setOnMouseClicked((e) -> switchedOn.set(!switchedOn.get()));
-        getChildren().addAll(defaultLabel, button);
+        init(onState, offState);
+        label.setText(offState);
+        label.setPrefWidth(textFalse.getLayoutBounds().getWidth());
+        button.setPrefWidth(textTrue.getLayoutBounds().getWidth());
+        this.switchWidth = (textTrue.getLayoutBounds().getWidth() + textFalse.getLayoutBounds().getWidth());
         switchedOn.addListener((a,b,c) -> {
             if (c) {
-                defaultLabel.setText("ON");
-                setStyle("-fx-background-color: #a7ef88; -fx-background-radius: 20;");
-                defaultLabel.toFront();
+                label.setText(onState);
+                label.setPrefWidth(textTrue.getLayoutBounds().getWidth());
+                button.setPrefWidth(textFalse.getLayoutBounds().getWidth());
+                setStyle(String.format("-fx-background-color: #%s; -fx-background-radius: 20;", colorToHex(trueColored)));
+                label.toFront();
                 selected = true;
+                setTransition(transType);
             } else {
-                defaultLabel.setText("OFF");
-                setStyle("-fx-background-color: #aeb0b2; -fx-background-radius: 20;");
+                label.setText(offState);
+                label.setPrefWidth(textFalse.getLayoutBounds().getWidth());
+                button.setPrefWidth(textTrue.getLayoutBounds().getWidth());
+                setStyle(String.format("-fx-background-color: #%s; -fx-background-radius: 20;", colorToHex(falseColored)));
                 button.toFront();
                 selected = false;
+                setTransition(transType);
             }
         });
     }
@@ -127,37 +192,46 @@ public class SwitchToggle extends HBox {
      * @param transitionType is the transitionType of the customizable Toggle Switch.
      */
     public SwitchToggle(String trueState, Color trueColor, String falseState, Color falseColor, TransitionType transitionType) {
-        this.toggleSwitch = true;
         this.onState = trueState;
         this.offState = falseState;
         this.falseColored = falseColor;
         this.trueColored = trueColor;
-        init(falseState);
+        this.transType = transitionType;
+        init(onState, offState);
+        label.setPrefWidth(textFalse.getLayoutBounds().getWidth());
+        button.setPrefWidth(textTrue.getLayoutBounds().getWidth());
+        this.switchWidth = (textTrue.getLayoutBounds().getWidth() + textFalse.getLayoutBounds().getWidth());
         switchedOn.addListener((a,b,c) -> {
             if (c) {
-                label.setText(trueState);
-                setStyle(String.format("-fx-background-color: #%s; -fx-background-radius: 20;", colorToHex(trueColor)));
+                label.setText(onState);
+                label.setPrefWidth(textTrue.getLayoutBounds().getWidth());
+                button.setPrefWidth(textFalse.getLayoutBounds().getWidth());
+                setStyle(String.format("-fx-background-color: #%s; -fx-background-radius: 20;", colorToHex(trueColored)));
                 label.toFront();
                 selected = true;
-                setTransition(transitionType);
+                setTransition(transType);
             } else {
-                label.setText(falseState);
-                setStyle(String.format("-fx-background-color: #%s; -fx-background-radius: 20;", colorToHex(falseColor)));
+                label.setText(offState);
+                label.setPrefWidth(textFalse.getLayoutBounds().getWidth());
+                button.setPrefWidth(textTrue.getLayoutBounds().getWidth());
+                setStyle(String.format("-fx-background-color: #%s; -fx-background-radius: 20;", colorToHex(falseColored)));
                 button.toFront();
                 selected = false;
-                setTransition(transitionType);
+                setTransition(transType);
             }
         });
     }
 
     /**
      * Initializes the Toggle Switch.
-     * @param startText is the text to be displayed for the default state of
-     *      the Toggle Switch.
+     * @param trueText is the text to be displayed for the default true state of the Toggle Switch.
+     * @param falseText is the text to be displayed for the default false state of the Toggle Switch.
      */
-    private void init(String startText) {
-        text = new Text(String.format("  %s  ", startText));
-        text.applyCss();
+    private void init(String trueText, String falseText) {
+        textTrue = new Text(String.format("   %s   ", trueText));
+        textTrue.applyCss();
+        textFalse = new Text(String.format("   %s   ", falseText));
+        textFalse.applyCss();
         button.setOnAction((e) -> switchedOn.set(!switchedOn.get()));
         label.setOnMouseClicked((e) -> switchedOn.set(!switchedOn.get()));
         getChildren().addAll(label, button);
@@ -169,22 +243,11 @@ public class SwitchToggle extends HBox {
      * Sets the style of the Toggle Switch.
      */
     private void setStyled() {
-        if (toggleSwitch) {
-            this.initWidth = (text.getLayoutBounds().getWidth() * 2);
-            setWidth(initWidth);
-            setStyle(String.format("-fx-background-color: #%s; -fx-background-radius: 20;", colorToHex(falseColored)));
-            setAlignment(Pos.CENTER_LEFT);
-            label.setAlignment(Pos.CENTER);
-            label.setFont(Font.font("Arial", FontWeight.SEMI_BOLD, 14));
-            button.setStyle("-fx-background-radius: 20;");
-        } else {
-            setWidth(80);
-            setStyle("-fx-background-color: #aeb0b2; -fx-background-radius: 20;");
-            setAlignment(Pos.CENTER_LEFT);
-            defaultLabel.setAlignment(Pos.CENTER);
-            defaultLabel.setFont(Font.font("Arial", FontWeight.SEMI_BOLD, 14));
-            button.setStyle("-fx-background-radius: 20;");
-        }
+        setStyle(String.format("-fx-background-color: #%s; -fx-background-radius: 20;", colorToHex(falseColored)));
+        setAlignment(Pos.CENTER_LEFT);
+        label.setAlignment(Pos.CENTER);
+        label.setFont(Font.font("Arial", FontWeight.SEMI_BOLD, 14));
+        button.setStyle("-fx-background-radius: 20;");
     }
 
     /**
@@ -192,17 +255,20 @@ public class SwitchToggle extends HBox {
      * to properties of the Toggle Switch height and width.
      */
     private void bindProperties() {
-        if (toggleSwitch) {
-            label.prefWidthProperty().bind(widthProperty().divide(2));
-            label.prefHeightProperty().bind(heightProperty());
-            button.prefWidthProperty().bind(widthProperty().divide(2));
-            button.prefHeightProperty().bind(heightProperty());
-        } else {
-            defaultLabel.prefWidthProperty().bind(widthProperty().divide(2));
-            defaultLabel.prefHeightProperty().bind(heightProperty());
-            button.prefWidthProperty().bind(widthProperty().divide(2));
-            button.prefHeightProperty().bind(heightProperty());
-        }
+        label.prefHeightProperty().bind(heightProperty());
+        button.prefHeightProperty().bind(heightProperty());
+    }
+
+    /**
+     * Initializes the Text used to set the width of the Toggle Switch.
+     * @param trueText is the text to be displayed for the true state of the Toggle Switch.
+     * @param falseText is the text to be displayed for the false state of the Toggle Switch.
+     */
+    private void initText(String trueText, String falseText) {
+        textTrue = new Text(String.format("   %s   ", trueText));
+        textTrue.applyCss();
+        textFalse = new Text(String.format("   %s   ", falseText));
+        textFalse.applyCss();
     }
 
     /**
@@ -230,211 +296,216 @@ public class SwitchToggle extends HBox {
      *                       customizable Toggle Switch.
      */
     private void setTransition(TransitionType transitionType) {
-        if (transitionType == TransitionType.COMPRESS) {
-            Timeline timeline = new Timeline();
-            timeline.getKeyFrames().addAll(new KeyFrame(Duration.ZERO, new KeyValue(prefWidthProperty(), 50)),
-                    new KeyFrame(Duration.millis(500.0d), new KeyValue(prefWidthProperty(), initWidth))
-            );
-            timeline.play();
-        } else if (transitionType == TransitionType.POP) {
-            button.setScaleX(0.8);
-            button.setScaleY(0.8);
-            timer.schedule(new TimerTask() {
-                @Override
-                public void run() {
-                    Platform.runLater(() -> {
-                        button.setScaleX(1.0);
-                        button.setScaleY(1.0);
-                    });
+        switch (transitionType) {
+            case COMPRESS:
+                Timeline timeline = new Timeline();
+                timeline.getKeyFrames().addAll(new KeyFrame(Duration.ZERO, new KeyValue(prefWidthProperty(), 50)),
+                        new KeyFrame(Duration.millis(500.0d), new KeyValue(prefWidthProperty(), this.switchWidth))
+                );
+                timeline.play();
+                break;
+            case POP:
+                button.setScaleX(0.8);
+                button.setScaleY(0.8);
+                timer.schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        Platform.runLater(() -> {
+                            button.setScaleX(1.0);
+                            button.setScaleY(1.0);
+                        });
+                    }
+                }, 200);
+                break;
+            case ROTATE:
+                if (selected) {
+                    label.setText("**");
+                    label.setFont(Font.font("Arial", FontWeight.SEMI_BOLD, 12));
+                    label.setRotate(90);
+                    timer.schedule(new TimerTask() {
+                        @Override
+                        public void run() {
+                            Platform.runLater(() -> {
+                                label.setRotate(180);
+                                timer.schedule(new TimerTask() {
+                                    @Override
+                                    public void run() {
+                                        Platform.runLater(() -> {
+                                            label.setRotate(270);
+                                            timer.schedule(new TimerTask() {
+                                                @Override
+                                                public void run() {
+                                                    Platform.runLater(() -> {
+                                                        label.setRotate(360);
+                                                        timer.schedule(new TimerTask() {
+                                                            @Override
+                                                            public void run() {
+                                                                Platform.runLater(() -> {
+                                                                    label.setText(onState);
+                                                                    label.setFont(Font.font("Arial", FontWeight.SEMI_BOLD, 14));
+                                                                });
+                                                            }
+                                                        }, 200);
+                                                    });
+                                                }
+                                            }, 100);
+                                        });
+                                    }
+                                }, 100);
+                            });
+                        }
+                    }, 100);
+                } else {
+                    label.setText("**");
+                    label.setFont(Font.font("Arial", FontWeight.SEMI_BOLD, 12));
+                    label.setRotate(-270);
+                    timer.schedule(new TimerTask() {
+                        @Override
+                        public void run() {
+                            Platform.runLater(() -> {
+                                label.setRotate(-180);
+                                timer.schedule(new TimerTask() {
+                                    @Override
+                                    public void run() {
+                                        Platform.runLater(() -> {
+                                            label.setRotate(-90);
+                                            timer.schedule(new TimerTask() {
+                                                @Override
+                                                public void run() {
+                                                    Platform.runLater(() -> {
+                                                        label.setRotate(0);
+                                                        timer.schedule(new TimerTask() {
+                                                            @Override
+                                                            public void run() {
+                                                                Platform.runLater(() -> {
+                                                                    label.setText(offState);
+                                                                    label.setFont(Font.font("Arial", FontWeight.SEMI_BOLD, 14));
+                                                                });
+                                                            }
+                                                        }, 200);
+                                                    });
+                                                }
+                                            }, 100);
+                                        });
+                                    }
+                                }, 100);
+                            });
+                        }
+                    }, 100);
                 }
-            }, 200);
-        } else if (transitionType == TransitionType.ROTATE) {
-            if (selected) {
-                label.setText("**");
-                label.setFont(Font.font("Arial", FontWeight.SEMI_BOLD, 12));
-                label.setRotate(90);
-                timer.schedule(new TimerTask() {
-                    @Override
-                    public void run() {
-                        Platform.runLater(() -> {
-                            label.setRotate(180);
-                            timer.schedule(new TimerTask() {
-                                @Override
-                                public void run() {
-                                    Platform.runLater(() -> {
-                                        label.setRotate(270);
-                                        timer.schedule(new TimerTask() {
-                                            @Override
-                                            public void run() {
-                                                Platform.runLater(() -> {
-                                                    label.setRotate(360);
-                                                    timer.schedule(new TimerTask() {
-                                                        @Override
-                                                        public void run() {
-                                                            Platform.runLater(() -> {
-                                                                label.setText(onState);
-                                                                label.setFont(Font.font("Arial", FontWeight.SEMI_BOLD, 14));
-                                                            });
-                                                        }
-                                                    }, 200);
-                                                });
-                                            }
-                                        }, 100);
-                                    });
-                                }
-                            }, 100);
-                        });
-                    }
-                }, 100);
-            } else {
-                label.setText("**");
-                label.setFont(Font.font("Arial", FontWeight.SEMI_BOLD, 12));
-                label.setRotate(-270);
-                timer.schedule(new TimerTask() {
-                    @Override
-                    public void run() {
-                        Platform.runLater(() -> {
-                            label.setRotate(-180);
-                            timer.schedule(new TimerTask() {
-                                @Override
-                                public void run() {
-                                    Platform.runLater(() -> {
-                                        label.setRotate(-90);
-                                        timer.schedule(new TimerTask() {
-                                            @Override
-                                            public void run() {
-                                                Platform.runLater(() -> {
-                                                    label.setRotate(0);
-                                                    timer.schedule(new TimerTask() {
-                                                        @Override
-                                                        public void run() {
-                                                            Platform.runLater(() -> {
-                                                                label.setText(offState);
-                                                                label.setFont(Font.font("Arial", FontWeight.SEMI_BOLD, 14));
-                                                            });
-                                                        }
-                                                    }, 200);
-                                                });
-                                            }
-                                        }, 100);
-                                    });
-                                }
-                            }, 100);
-                        });
-                    }
-                }, 100);
-            }
-        } else if (transitionType == TransitionType.BUZZ) {
-            button.setScaleX(0.8);
-            button.setScaleY(0.8);
-            if (selected) {
-                button.setTranslateX(-2.0);
-                timer.schedule(new TimerTask() {
-                    @Override
-                    public void run() {
-                        Platform.runLater(() -> {
-                            button.setTranslateY(2.0);
-                            timer.schedule(new TimerTask() {
-                                @Override
-                                public void run() {
-                                    Platform.runLater(() -> {
-                                        button.setTranslateX(2.0);
-                                        timer.schedule(new TimerTask() {
-                                            @Override
-                                            public void run() {
-                                                Platform.runLater(() -> {
-                                                    button.setTranslateY(-2.0);
-                                                    timer.schedule(new TimerTask() {
-                                                        @Override
-                                                        public void run() {
-                                                            Platform.runLater(() -> {
-                                                                button.setTranslateX(-2.0);
-                                                                timer.schedule(new TimerTask() {
-                                                                    @Override
-                                                                    public void run() {
-                                                                        Platform.runLater(() -> {
-                                                                            button.setTranslateY(2.0);
-                                                                            timer.schedule(new TimerTask() {
-                                                                                @Override
-                                                                                public void run() {
-                                                                                    Platform.runLater(() -> {
-                                                                                        button.setTranslateX(0.0);
-                                                                                        button.setTranslateY(0.0);
-                                                                                        button.setScaleX(1.0);
-                                                                                        button.setScaleY(1.0);
-                                                                                    });
-                                                                                }
-                                                                            }, 100);
-                                                                        });
-                                                                    }
-                                                                }, 100);
-                                                            });
-                                                        }
-                                                    }, 100);
-                                                });
-                                            }
-                                        }, 100);
-                                    });
-                                }
-                            }, 100);
-                        });
-                    }
-                }, 100);
-            } else {
-                button.setTranslateX(2.0);
-                timer.schedule(new TimerTask() {
-                    @Override
-                    public void run() {
-                        Platform.runLater(() -> {
-                            button.setTranslateY(-2.0);
-                            timer.schedule(new TimerTask() {
-                                @Override
-                                public void run() {
-                                    Platform.runLater(() -> {
-                                        button.setTranslateX(-2.0);
-                                        timer.schedule(new TimerTask() {
-                                            @Override
-                                            public void run() {
-                                                Platform.runLater(() -> {
-                                                    button.setTranslateY(2.0);
-                                                    timer.schedule(new TimerTask() {
-                                                        @Override
-                                                        public void run() {
-                                                            Platform.runLater(() -> {
-                                                                button.setTranslateX(2.0);
-                                                                timer.schedule(new TimerTask() {
-                                                                    @Override
-                                                                    public void run() {
-                                                                        Platform.runLater(() -> {
-                                                                            button.setTranslateY(-2.0);
-                                                                            timer.schedule(new TimerTask() {
-                                                                                @Override
-                                                                                public void run() {
-                                                                                    Platform.runLater(() -> {
-                                                                                        button.setTranslateX(0.0);
-                                                                                        button.setTranslateY(0.0);
-                                                                                        button.setScaleX(1.0);
-                                                                                        button.setScaleY(1.0);
-                                                                                    });
-                                                                                }
-                                                                            }, 100);
-                                                                        });
-                                                                    }
-                                                                }, 100);
-                                                            });
-                                                        }
-                                                    }, 100);
-                                                });
-                                            }
-                                        }, 100);
-                                    });
-                                }
-                            }, 100);
-                        });
-                    }
-                }, 100);
-            }
-        } else if (transitionType == TransitionType.NONE) {}
+                break;
+            case BUZZ:
+                button.setScaleX(0.8);
+                button.setScaleY(0.8);
+                if (selected) {
+                    button.setTranslateX(-2.0);
+                    timer.schedule(new TimerTask() {
+                        @Override
+                        public void run() {
+                            Platform.runLater(() -> {
+                                button.setTranslateY(2.0);
+                                timer.schedule(new TimerTask() {
+                                    @Override
+                                    public void run() {
+                                        Platform.runLater(() -> {
+                                            button.setTranslateX(2.0);
+                                            timer.schedule(new TimerTask() {
+                                                @Override
+                                                public void run() {
+                                                    Platform.runLater(() -> {
+                                                        button.setTranslateY(-2.0);
+                                                        timer.schedule(new TimerTask() {
+                                                            @Override
+                                                            public void run() {
+                                                                Platform.runLater(() -> {
+                                                                    button.setTranslateX(-2.0);
+                                                                    timer.schedule(new TimerTask() {
+                                                                        @Override
+                                                                        public void run() {
+                                                                            Platform.runLater(() -> {
+                                                                                button.setTranslateY(2.0);
+                                                                                timer.schedule(new TimerTask() {
+                                                                                    @Override
+                                                                                    public void run() {
+                                                                                        Platform.runLater(() -> {
+                                                                                            button.setTranslateX(0.0);
+                                                                                            button.setTranslateY(0.0);
+                                                                                            button.setScaleX(1.0);
+                                                                                            button.setScaleY(1.0);
+                                                                                        });
+                                                                                    }
+                                                                                }, 100);
+                                                                            });
+                                                                        }
+                                                                    }, 100);
+                                                                });
+                                                            }
+                                                        }, 100);
+                                                    });
+                                                }
+                                            }, 100);
+                                        });
+                                    }
+                                }, 100);
+                            });
+                        }
+                    }, 100);
+                } else {
+                    button.setTranslateX(2.0);
+                    timer.schedule(new TimerTask() {
+                        @Override
+                        public void run() {
+                            Platform.runLater(() -> {
+                                button.setTranslateY(-2.0);
+                                timer.schedule(new TimerTask() {
+                                    @Override
+                                    public void run() {
+                                        Platform.runLater(() -> {
+                                            button.setTranslateX(-2.0);
+                                            timer.schedule(new TimerTask() {
+                                                @Override
+                                                public void run() {
+                                                    Platform.runLater(() -> {
+                                                        button.setTranslateY(2.0);
+                                                        timer.schedule(new TimerTask() {
+                                                            @Override
+                                                            public void run() {
+                                                                Platform.runLater(() -> {
+                                                                    button.setTranslateX(2.0);
+                                                                    timer.schedule(new TimerTask() {
+                                                                        @Override
+                                                                        public void run() {
+                                                                            Platform.runLater(() -> {
+                                                                                button.setTranslateY(-2.0);
+                                                                                timer.schedule(new TimerTask() {
+                                                                                    @Override
+                                                                                    public void run() {
+                                                                                        Platform.runLater(() -> {
+                                                                                            button.setTranslateX(0.0);
+                                                                                            button.setTranslateY(0.0);
+                                                                                            button.setScaleX(1.0);
+                                                                                            button.setScaleY(1.0);
+                                                                                        });
+                                                                                    }
+                                                                                }, 100);
+                                                                            });
+                                                                        }
+                                                                    }, 100);
+                                                                });
+                                                            }
+                                                        }, 100);
+                                                    });
+                                                }
+                                            }, 100);
+                                        });
+                                    }
+                                }, 100);
+                            });
+                        }
+                    }, 100);
+                }
+                break;
+        }
     }
 
 }

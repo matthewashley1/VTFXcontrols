@@ -1,7 +1,7 @@
 package VTFXcontrols;
 
-/**
- * Created by Vern Technologies on 7/19/17. For package VTFXcontrols.
+/*
+  Created by Vern Technologies on 7/19/17. For package VTFXcontrols.
  */
 
 import java.io.File;
@@ -80,9 +80,9 @@ public class Functions {
         StringBuilder buildAdd = new StringBuilder(checkAdd);
         char[] inputCharacterCheck = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.'};
         char[] inputToArray = checkAdd.toCharArray();
-        for (int x = 0; x < inputToArray.length; x++) {
-            for(int y = 0; y < inputCharacterCheck.length; y++) {
-                if (inputToArray[x] == inputCharacterCheck[y]) {
+        for (char anInputToArray : inputToArray) {
+            for (char anInputCharacterCheck : inputCharacterCheck) {
+                if (anInputToArray == anInputCharacterCheck) {
                     characterCheckCount++;
                 }
             }
@@ -90,11 +90,7 @@ public class Functions {
         if ((inputToArray[inputToArray.length - 3]) != '.') {
             doubleCheck = false;
         }
-        if (characterCheckCount == inputToArray.length && doubleCheck) {
-            checkInput = true;
-        } else {
-            checkInput = false;
-        }
+        checkInput = characterCheckCount == inputToArray.length && doubleCheck;
         if (checkInput) {
             buildAdd.reverse();
             int q = 0;
@@ -130,18 +126,14 @@ public class Functions {
         StringBuilder buildAdd = new StringBuilder(checkAdd);
         char[] inputCharacterCheck = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
         char[] inputToArray = checkAdd.toCharArray();
-        for (int x = 0; x < inputToArray.length; x++) {
-            for(int y = 0; y < inputCharacterCheck.length; y++) {
-                if (inputToArray[x] == inputCharacterCheck[y]) {
+        for (char anInputToArray : inputToArray) {
+            for (char anInputCharacterCheck : inputCharacterCheck) {
+                if (anInputToArray == anInputCharacterCheck) {
                     characterCheckCount++;
                 }
             }
         }
-        if (characterCheckCount == inputToArray.length) {
-            checkInput = true;
-        } else {
-            checkInput = false;
-        }
+        checkInput = characterCheckCount == inputToArray.length;
         if (checkInput) {
             buildAdd.reverse();
             int q = 0;
@@ -365,8 +357,8 @@ public class Functions {
      */
     public double sum(double numbers []) {
         double sum = 0;
-        for (int i = 0; i < numbers.length; i++) {
-            sum = (sum + numbers[i]);
+        for (double number : numbers) {
+            sum = (sum + number);
         }
         return sum;
     }
@@ -379,8 +371,8 @@ public class Functions {
      */
     public double sum(List<Double> numbers) {
         double sum = 0;
-        for(int x = 0; x < numbers.size(); x++) {
-            sum = (sum + numbers.get(x));
+        for (Double number : numbers) {
+            sum = (sum + number);
         }
         return sum;
     }
@@ -388,7 +380,7 @@ public class Functions {
     /**
      * Sorts the inputted array of numbers into Odd and Even list.
      * Variable array is a array of numbers.
-     * @param sortEO contains the arrat of numbers.
+     * @param sortEO contains the array of numbers.
      * @return Returns two arrays sorted from the elements of the inputted array into even and odd arrays as one Object.
      */
     public Object[] evenAndOdd(double sortEO []) {
@@ -462,144 +454,400 @@ public class Functions {
         for (int i = 0; 0 < temp; i++) {
             array [i] = (temp % 10);
             temp = (temp / 10);  }
-        for (int j = 0; j < array.length; j++) {
-           if ((b == 1) || (b == 4) || (b == 7)) {
-                if (b == 1) { c = 0; }
-                if (b == 4) { c = 3; }
-                if (b == 7) { c = 6; }
-                if (array [b] == 1) {
-                    jump = 1;
-                    if (array [c] == 0) { numberSpell.append(" Ten ");
-                        if (b == 4) { numberSpell.append("Thousand"); }
-                        if (b == 7) { numberSpell.append("Million"); }}
-                    else if (array [c] == 1) { numberSpell.append(" Eleven ");
-                        if (b == 4) { numberSpell.append("Thousand"); }
-                        if (b == 7) { numberSpell.append("Million"); }}
-                    else if (array [c] == 2) { numberSpell.append(" Twelve ");
-                        if (b == 4) { numberSpell.append("Thousand"); }
-                        if (b == 7) { numberSpell.append("Million"); }}
-                    else if (array [c] == 3) { numberSpell.append(" Thirteen ");
-                        if (b == 4) { numberSpell.append("Thousand"); }
-                        if (b == 7) { numberSpell.append("Million"); }}
-                    else if (array [c] == 4) { numberSpell.append(" Fourteen ");
-                        if (b == 4) { numberSpell.append("Thousand"); }
-                        if (b == 7) { numberSpell.append("Million"); }}
-                    else if (array [c] == 5) { numberSpell.append(" Fifteen ");
-                        if (b == 4) { numberSpell.append("Thousand"); }
-                        if (b == 7) { numberSpell.append("Million"); }}
-                    else if (array [c] == 6) { numberSpell.append(" Sixteen ");
-                        if (b == 4) { numberSpell.append("Thousand"); }
-                        if (b == 7) { numberSpell.append("Million"); }}
-                    else if (array [c] == 7) { numberSpell.append(" Seventeen ");
-                        if (b == 4) { numberSpell.append("Thousand"); }
-                        if (b == 7) { numberSpell.append("Million"); }}
-                    else if (array [c] == 8) { numberSpell.append(" Eighteen ");
-                        if (b == 4) { numberSpell.append("Thousand"); }
-                        if (b == 7) { numberSpell.append("Million"); }}
-                    else if (array [c] == 9) { numberSpell.append(" Nineteen ");
-                        if (b == 4) { numberSpell.append("Thousand"); }
-                        if (b == 7) { numberSpell.append("Million"); }}
+        for (int anArray : array) {
+            if ((b == 1) || (b == 4) || (b == 7)) {
+                if (b == 1) {
+                    c = 0;
                 }
-                else if (array [b] == 2) { numberSpell.append(" Twenty");
-                    if ((array [c] == 0) && (b == 4)) { numberSpell.append(" Thousand");}
-                    if ((array [c] == 0) && (b == 7)) { numberSpell.append(" Million"); }}
-                else if (array [b] == 3) { numberSpell.append(" Thirty");
-                    if ((array [c] == 0) && (b == 4)) { numberSpell.append(" Thousand");}
-                    if ((array [c] == 0) && (b == 7)) { numberSpell.append(" Million"); }}
-                else if (array [b] == 4) { numberSpell.append(" Forty");
-                    if ((array [c] == 0) && (b == 4)) { numberSpell.append(" Thousand");}
-                    if ((array [c] == 0) && (b == 7)) { numberSpell.append(" Million"); }}
-                else if (array [b] == 5) { numberSpell.append(" Fifty");
-                    if ((array [c] == 0) && (b == 4)) { numberSpell.append(" Thousand");}
-                    if ((array [c] == 0) && (b == 7)) { numberSpell.append(" Million"); }}
-                else if (array [b] == 6) {numberSpell.append(" Sixty");
-                    if ((array [c] == 0) && (b == 4)) { numberSpell.append(" Thousand");}
-                    if ((array [c] == 0) && (b == 7)) { numberSpell.append(" Million"); }}
-                else if (array [b] == 7) { numberSpell.append(" Seventy");
-                    if ((array [c] == 0) && (b == 4)) { numberSpell.append(" Thousand");}
-                    if ((array [c] == 0) && (b == 7)) { numberSpell.append(" Million"); }}
-                else if (array [b] == 8) { numberSpell.append(" Eighty");
-                    if ((array [c] == 0) && (b == 4)) { numberSpell.append(" Thousand");}
-                    if ((array [c] == 0) && (b == 7)) { numberSpell.append(" Million"); }}
-                else if (array [b] == 9) { numberSpell.append(" Ninety");
-                    if ((array [c] == 0) && (b == 4)) { numberSpell.append(" Thousand");}
-                    if ((array [c] == 0) && (b == 7)) { numberSpell.append(" Million"); }}
+                if (b == 4) {
+                    c = 3;
+                }
+                if (b == 7) {
+                    c = 6;
+                }
+                switch (array[b]) {
+                    case 1:
+                        jump = 1;
+                        switch (array[c]) {
+                            case 0:
+                                numberSpell.append(" Ten ");
+                                if (b == 4) {
+                                    numberSpell.append("Thousand");
+                                }
+                                if (b == 7) {
+                                    numberSpell.append("Million");
+                                }
+                                break;
+                            case 1:
+                                numberSpell.append(" Eleven ");
+                                if (b == 4) {
+                                    numberSpell.append("Thousand");
+                                }
+                                if (b == 7) {
+                                    numberSpell.append("Million");
+                                }
+                                break;
+                            case 2:
+                                numberSpell.append(" Twelve ");
+                                if (b == 4) {
+                                    numberSpell.append("Thousand");
+                                }
+                                if (b == 7) {
+                                    numberSpell.append("Million");
+                                }
+                                break;
+                            case 3:
+                                numberSpell.append(" Thirteen ");
+                                if (b == 4) {
+                                    numberSpell.append("Thousand");
+                                }
+                                if (b == 7) {
+                                    numberSpell.append("Million");
+                                }
+                                break;
+                            case 4:
+                                numberSpell.append(" Fourteen ");
+                                if (b == 4) {
+                                    numberSpell.append("Thousand");
+                                }
+                                if (b == 7) {
+                                    numberSpell.append("Million");
+                                }
+                                break;
+                            case 5:
+                                numberSpell.append(" Fifteen ");
+                                if (b == 4) {
+                                    numberSpell.append("Thousand");
+                                }
+                                if (b == 7) {
+                                    numberSpell.append("Million");
+                                }
+                                break;
+                            case 6:
+                                numberSpell.append(" Sixteen ");
+                                if (b == 4) {
+                                    numberSpell.append("Thousand");
+                                }
+                                if (b == 7) {
+                                    numberSpell.append("Million");
+                                }
+                                break;
+                            case 7:
+                                numberSpell.append(" Seventeen ");
+                                if (b == 4) {
+                                    numberSpell.append("Thousand");
+                                }
+                                if (b == 7) {
+                                    numberSpell.append("Million");
+                                }
+                                break;
+                            case 8:
+                                numberSpell.append(" Eighteen ");
+                                if (b == 4) {
+                                    numberSpell.append("Thousand");
+                                }
+                                if (b == 7) {
+                                    numberSpell.append("Million");
+                                }
+                                break;
+                            case 9:
+                                numberSpell.append(" Nineteen ");
+                                if (b == 4) {
+                                    numberSpell.append("Thousand");
+                                }
+                                if (b == 7) {
+                                    numberSpell.append("Million");
+                                }
+                                break;
+                        }
+                        break;
+                    case 2:
+                        numberSpell.append(" Twenty");
+                        if ((array[c] == 0) && (b == 4)) {
+                            numberSpell.append(" Thousand");
+                        }
+                        if ((array[c] == 0) && (b == 7)) {
+                            numberSpell.append(" Million");
+                        }
+                        break;
+                    case 3:
+                        numberSpell.append(" Thirty");
+                        if ((array[c] == 0) && (b == 4)) {
+                            numberSpell.append(" Thousand");
+                        }
+                        if ((array[c] == 0) && (b == 7)) {
+                            numberSpell.append(" Million");
+                        }
+                        break;
+                    case 4:
+                        numberSpell.append(" Forty");
+                        if ((array[c] == 0) && (b == 4)) {
+                            numberSpell.append(" Thousand");
+                        }
+                        if ((array[c] == 0) && (b == 7)) {
+                            numberSpell.append(" Million");
+                        }
+                        break;
+                    case 5:
+                        numberSpell.append(" Fifty");
+                        if ((array[c] == 0) && (b == 4)) {
+                            numberSpell.append(" Thousand");
+                        }
+                        if ((array[c] == 0) && (b == 7)) {
+                            numberSpell.append(" Million");
+                        }
+                        break;
+                    case 6:
+                        numberSpell.append(" Sixty");
+                        if ((array[c] == 0) && (b == 4)) {
+                            numberSpell.append(" Thousand");
+                        }
+                        if ((array[c] == 0) && (b == 7)) {
+                            numberSpell.append(" Million");
+                        }
+                        break;
+                    case 7:
+                        numberSpell.append(" Seventy");
+                        if ((array[c] == 0) && (b == 4)) {
+                            numberSpell.append(" Thousand");
+                        }
+                        if ((array[c] == 0) && (b == 7)) {
+                            numberSpell.append(" Million");
+                        }
+                        break;
+                    case 8:
+                        numberSpell.append(" Eighty");
+                        if ((array[c] == 0) && (b == 4)) {
+                            numberSpell.append(" Thousand");
+                        }
+                        if ((array[c] == 0) && (b == 7)) {
+                            numberSpell.append(" Million");
+                        }
+                        break;
+                    case 9:
+                        numberSpell.append(" Ninety");
+                        if ((array[c] == 0) && (b == 4)) {
+                            numberSpell.append(" Thousand");
+                        }
+                        if ((array[c] == 0) && (b == 7)) {
+                            numberSpell.append(" Million");
+                        }
+                        break;
+                }
             }
-            if ((b == 0) || (b == 2) || (b == 3) || (b == 5) ||(b == 6) || (b == 8) ||(b == 9)) {
-                if ((b == 2) || (b == 5)) { jump = 0; }
-                if (jump == 1) {}
-                else if (array [b] == 1) { numberSpell.append(" One ");
-                    if (b == 3) { numberSpell.append("Thousand"); }
-                    if ((b == 2) || (b == 5)) { numberSpell.append("Hundred");
-                        if ((b == 5) && (array [4] ==0) && (array [3] == 0)){ numberSpell.append(" Thousand"); }}
-                    if (b == 6) { numberSpell.append("Million"); }
-                    if (b == 8) { numberSpell.append("Hundred");
-                        if ((array [7] ==0) && (array [6] == 0)){ numberSpell.append(" Million"); }}
-                    if (b == 9) { numberSpell.append("Billion"); }}
-                else if (array [b] == 2) { numberSpell.append(" Two ");
-                    if (b == 3) { numberSpell.append("Thousand"); }
-                    if ((b == 2) || (b == 5)) { numberSpell.append("Hundred");
-                        if ((b == 5) && (array [4] ==0) && (array [3] == 0)) { numberSpell.append(" Thousand"); }}
-                    if (b == 6) { numberSpell.append("Million"); }
-                    if (b == 8) { numberSpell.append("Hundred");
-                        if ((array [7] ==0) && (array [6] == 0)){ numberSpell.append(" Million"); }}
-                    if (b == 9) { numberSpell.append("Billion"); }}
-                else if (array [b] == 3) { numberSpell.append(" Three ");
-                    if (b == 3) { numberSpell.append("Thousand"); }
-                    if ((b == 2) || (b == 5)) { numberSpell.append("Hundred");
-                        if ((b == 5) && (array [4] ==0) && (array [3] == 0)) { numberSpell.append(" Thousand"); }}
-                    if (b == 6) { numberSpell.append("Million"); }
-                    if (b == 8) { numberSpell.append("Hundred");
-                        if ((array [7] ==0) && (array [6] == 0)){ numberSpell.append(" Million"); }}
-                    if (b == 9) { numberSpell.append("Billion"); }}
-                else if (array [b] == 4) { numberSpell.append(" Four ");
-                    if (b == 3) { numberSpell.append("Thousand"); }
-                    if ((b == 2) || (b == 5)) { numberSpell.append("Hundred");
-                        if ((b == 5) && (array [4] ==0) && (array [3] == 0)) { numberSpell.append(" Thousand"); }}
-                    if (b == 6) { numberSpell.append("Million"); }
-                    if (b == 8) { numberSpell.append("Hundred");
-                        if ((array [7] ==0) && (array [6] == 0)){ numberSpell.append(" Million"); }}
-                    if (b == 9) { numberSpell.append("Billion"); }}
-                else if (array [b] == 5) { numberSpell.append(" Five ");
-                    if (b == 3) { numberSpell.append("Thousand"); }
-                    if ((b == 2) || (b == 5)) { numberSpell.append("Hundred");
-                        if ((b == 5) && (array [4] ==0) && (array [3] == 0)) { numberSpell.append(" Thousand"); }}
-                    if (b == 6) { numberSpell.append("Million"); }
-                    if (b == 8) { numberSpell.append("Hundred");
-                        if ((array [7] ==0) && (array [6] == 0)){ numberSpell.append(" Million"); }}
-                    if (b == 9) { numberSpell.append("Billion"); }}
-                else if (array [b] == 6) { numberSpell.append(" Six ");
-                    if (b == 3) { numberSpell.append("Thousand"); }
-                    if ((b == 2) || (b == 5)) { numberSpell.append("Hundred");
-                        if ((b == 5) && (array [4] ==0) && (array [3] == 0)) { numberSpell.append(" Thousand"); }}
-                    if (b == 6) { numberSpell.append("Million"); }
-                    if (b == 8) { numberSpell.append("Hundred");
-                        if ((array [7] ==0) && (array [6] == 0)){ numberSpell.append(" Million"); }}
-                    if (b == 9) { numberSpell.append("Billion"); }}
-                else if (array [b] == 7) { numberSpell.append(" Seven ");
-                    if (b == 3) { numberSpell.append("Thousand"); }
-                    if ((b == 2) || (b == 5)) { numberSpell.append("Hundred");
-                        if ((b == 5) && (array [4] ==0) && (array [3] == 0)) { numberSpell.append(" Thousand"); }}
-                    if (b == 6) { numberSpell.append("Million"); }
-                    if (b == 8) { numberSpell.append("Hundred");
-                        if ((array [7] ==0) && (array [6] == 0)){ numberSpell.append(" Million"); }}
-                    if (b == 9) { numberSpell.append("Billion"); }}
-                else if (array [b] == 8) { numberSpell.append(" Eight ");
-                    if (b == 3) { numberSpell.append("Thousand"); }
-                    if ((b == 2) || (b == 5)) { numberSpell.append("Hundred");
-                        if ((b == 5) && (array [4] ==0) && (array [3] == 0)) { numberSpell.append(" Thousand"); }}
-                    if (b == 6) { numberSpell.append("Million"); }
-                    if (b == 8) { numberSpell.append("Hundred");
-                        if ((array [7] ==0) && (array [6] == 0)){ numberSpell.append(" Million"); }}
-                    if (b == 9) { numberSpell.append("Billion"); }}
-                else if (array [b] == 9) { numberSpell.append(" Nine ");
-                    if (b == 3) { numberSpell.append("Thousand"); }
-                    if ((b == 2) || (b == 5)) { numberSpell.append("Hundred");
-                        if ((b == 5) && (array [4] ==0) && (array [3] == 0)) { numberSpell.append(" Thousand"); }}
-                    if (b == 6) { numberSpell.append("Million"); }
-                    if (b == 8) { numberSpell.append("Hundred");
-                        if ((array [7] ==0) && (array [6] == 0)){ numberSpell.append(" Million"); }}
-                    if (b == 9) { numberSpell.append("Billion"); }}
+            if ((b == 0) || (b == 2) || (b == 3) || (b == 5) || (b == 6) || (b == 8) || (b == 9)) {
+                if ((b == 2) || (b == 5)) {
+                    jump = 0;
+                }
+                if (jump == 1) {
+                } else if (array[b] == 1) {
+                    numberSpell.append(" One ");
+                    if (b == 3) {
+                        numberSpell.append("Thousand");
+                    }
+                    if ((b == 2) || (b == 5)) {
+                        numberSpell.append("Hundred");
+                        if ((b == 5) && (array[4] == 0) && (array[3] == 0)) {
+                            numberSpell.append(" Thousand");
+                        }
+                    }
+                    if (b == 6) {
+                        numberSpell.append("Million");
+                    }
+                    if (b == 8) {
+                        numberSpell.append("Hundred");
+                        if ((array[7] == 0) && (array[6] == 0)) {
+                            numberSpell.append(" Million");
+                        }
+                    }
+                    if (b == 9) {
+                        numberSpell.append("Billion");
+                    }
+                } else if (array[b] == 2) {
+                    numberSpell.append(" Two ");
+                    if (b == 3) {
+                        numberSpell.append("Thousand");
+                    }
+                    if ((b == 2) || (b == 5)) {
+                        numberSpell.append("Hundred");
+                        if ((b == 5) && (array[4] == 0) && (array[3] == 0)) {
+                            numberSpell.append(" Thousand");
+                        }
+                    }
+                    if (b == 6) {
+                        numberSpell.append("Million");
+                    }
+                    if (b == 8) {
+                        numberSpell.append("Hundred");
+                        if ((array[7] == 0) && (array[6] == 0)) {
+                            numberSpell.append(" Million");
+                        }
+                    }
+                    if (b == 9) {
+                        numberSpell.append("Billion");
+                    }
+                } else if (array[b] == 3) {
+                    numberSpell.append(" Three ");
+                    if (b == 3) {
+                        numberSpell.append("Thousand");
+                    }
+                    if ((b == 2) || (b == 5)) {
+                        numberSpell.append("Hundred");
+                        if ((b == 5) && (array[4] == 0) && (array[3] == 0)) {
+                            numberSpell.append(" Thousand");
+                        }
+                    }
+                    if (b == 6) {
+                        numberSpell.append("Million");
+                    }
+                    if (b == 8) {
+                        numberSpell.append("Hundred");
+                        if ((array[7] == 0) && (array[6] == 0)) {
+                            numberSpell.append(" Million");
+                        }
+                    }
+                    if (b == 9) {
+                        numberSpell.append("Billion");
+                    }
+                } else if (array[b] == 4) {
+                    numberSpell.append(" Four ");
+                    if (b == 3) {
+                        numberSpell.append("Thousand");
+                    }
+                    if ((b == 2) || (b == 5)) {
+                        numberSpell.append("Hundred");
+                        if ((b == 5) && (array[4] == 0) && (array[3] == 0)) {
+                            numberSpell.append(" Thousand");
+                        }
+                    }
+                    if (b == 6) {
+                        numberSpell.append("Million");
+                    }
+                    if (b == 8) {
+                        numberSpell.append("Hundred");
+                        if ((array[7] == 0) && (array[6] == 0)) {
+                            numberSpell.append(" Million");
+                        }
+                    }
+                    if (b == 9) {
+                        numberSpell.append("Billion");
+                    }
+                } else if (array[b] == 5) {
+                    numberSpell.append(" Five ");
+                    if (b == 3) {
+                        numberSpell.append("Thousand");
+                    }
+                    if ((b == 2) || (b == 5)) {
+                        numberSpell.append("Hundred");
+                        if ((b == 5) && (array[4] == 0) && (array[3] == 0)) {
+                            numberSpell.append(" Thousand");
+                        }
+                    }
+                    if (b == 6) {
+                        numberSpell.append("Million");
+                    }
+                    if (b == 8) {
+                        numberSpell.append("Hundred");
+                        if ((array[7] == 0) && (array[6] == 0)) {
+                            numberSpell.append(" Million");
+                        }
+                    }
+                    if (b == 9) {
+                        numberSpell.append("Billion");
+                    }
+                } else if (array[b] == 6) {
+                    numberSpell.append(" Six ");
+                    if (b == 3) {
+                        numberSpell.append("Thousand");
+                    }
+                    if ((b == 2) || (b == 5)) {
+                        numberSpell.append("Hundred");
+                        if ((b == 5) && (array[4] == 0) && (array[3] == 0)) {
+                            numberSpell.append(" Thousand");
+                        }
+                    }
+                    if (b == 6) {
+                        numberSpell.append("Million");
+                    }
+                    if (b == 8) {
+                        numberSpell.append("Hundred");
+                        if ((array[7] == 0) && (array[6] == 0)) {
+                            numberSpell.append(" Million");
+                        }
+                    }
+                    if (b == 9) {
+                        numberSpell.append("Billion");
+                    }
+                } else if (array[b] == 7) {
+                    numberSpell.append(" Seven ");
+                    if (b == 3) {
+                        numberSpell.append("Thousand");
+                    }
+                    if ((b == 2) || (b == 5)) {
+                        numberSpell.append("Hundred");
+                        if ((b == 5) && (array[4] == 0) && (array[3] == 0)) {
+                            numberSpell.append(" Thousand");
+                        }
+                    }
+                    if (b == 6) {
+                        numberSpell.append("Million");
+                    }
+                    if (b == 8) {
+                        numberSpell.append("Hundred");
+                        if ((array[7] == 0) && (array[6] == 0)) {
+                            numberSpell.append(" Million");
+                        }
+                    }
+                    if (b == 9) {
+                        numberSpell.append("Billion");
+                    }
+                } else if (array[b] == 8) {
+                    numberSpell.append(" Eight ");
+                    if (b == 3) {
+                        numberSpell.append("Thousand");
+                    }
+                    if ((b == 2) || (b == 5)) {
+                        numberSpell.append("Hundred");
+                        if ((b == 5) && (array[4] == 0) && (array[3] == 0)) {
+                            numberSpell.append(" Thousand");
+                        }
+                    }
+                    if (b == 6) {
+                        numberSpell.append("Million");
+                    }
+                    if (b == 8) {
+                        numberSpell.append("Hundred");
+                        if ((array[7] == 0) && (array[6] == 0)) {
+                            numberSpell.append(" Million");
+                        }
+                    }
+                    if (b == 9) {
+                        numberSpell.append("Billion");
+                    }
+                } else if (array[b] == 9) {
+                    numberSpell.append(" Nine ");
+                    if (b == 3) {
+                        numberSpell.append("Thousand");
+                    }
+                    if ((b == 2) || (b == 5)) {
+                        numberSpell.append("Hundred");
+                        if ((b == 5) && (array[4] == 0) && (array[3] == 0)) {
+                            numberSpell.append(" Thousand");
+                        }
+                    }
+                    if (b == 6) {
+                        numberSpell.append("Million");
+                    }
+                    if (b == 8) {
+                        numberSpell.append("Hundred");
+                        if ((array[7] == 0) && (array[6] == 0)) {
+                            numberSpell.append(" Million");
+                        }
+                    }
+                    if (b == 9) {
+                        numberSpell.append("Billion");
+                    }
+                }
             }
             c = 0;
             b--;
