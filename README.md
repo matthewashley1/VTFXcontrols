@@ -151,7 +151,7 @@ To set the display direction of the switchToggle to a predefined setting use <em
 ```
 
 <p align=“center”>
-To set the display direction of the switchToggle to a desired angle use <em>**setDirectionAngle(Double degrees)**</em>.
+To set the display direction of the switchToggle to a desired angle use **setDirectionAngle(Double degrees)**.
 <br>
 </p>
 
