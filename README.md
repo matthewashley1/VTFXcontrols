@@ -13,7 +13,7 @@ ___
 
 
 <p align=“center”>
-To use, create an instance of <em>**SwitchToggle**</em> and define its color, text, and Transition Effect.
+To use, create an instance of <em>SwitchToggle</em> and define its color, text, and Transition Effect.
 <br>
 </p>
 
@@ -61,7 +61,7 @@ There are 5 different Transition Effects that can be used, default(NONE), POP, C
 ### Other SwitchToggle Functionality
 
 <p align=“center”>
-To evaluate the state of the SwitchToggle with a change Listener use <em>**switchOnProperty()**</em>.
+To evaluate the state of the SwitchToggle with a change Listener use <em>switchOnProperty()</em>.
 <br>
 </p>
 
@@ -70,7 +70,7 @@ To evaluate the state of the SwitchToggle with a change Listener use <em>**switc
 ```
 
 <p align=“center”>
-To return the state of the switchToggle as boolean use <em>**isSelected()**</em>.
+To return the state of the switchToggle as boolean use <em>isSelected()</em>.
 <br>
 </p>
 
@@ -79,7 +79,7 @@ To return the state of the switchToggle as boolean use <em>**isSelected()**</em>
 ```
 
 <p align=“center”>
-To set the state of the switchToggle use <em>**setSelected(boolean state)**</em>.
+To set the state of the switchToggle use <em>setSelected(boolean state)</em>.
 <br>
 </p>
 
@@ -88,7 +88,7 @@ To set the state of the switchToggle use <em>**setSelected(boolean state)**</em>
 ```
 
 <p align=“center”>
-To set the true state color of the switchToggle use <em>**setTrueColored(Color trueColored)**</em>.
+To set the true state color of the switchToggle use <em>setTrueColored(Color trueColored)</em>.
 <br>
 </p>
 
@@ -97,7 +97,7 @@ To set the true state color of the switchToggle use <em>**setTrueColored(Color t
 ```
 
 <p align=“center”>
-To set the false state color of the switchToggle use <em>**setFalseColored(Color falseColored)**</em>.
+To set the false state color of the switchToggle use <em>setFalseColored(Color falseColored)</em>.
 <br>
 </p>
 
@@ -106,7 +106,7 @@ To set the false state color of the switchToggle use <em>**setFalseColored(Color
 ```
 
 <p align=“center”>
-To set the switch color of the switchToggle use <em>**setSwitchColored(Color switchColor)**</em>.
+To set the switch color of the switchToggle use <em>setSwitchColored(Color switchColor)</em>.
 <br>
 </p>
 
@@ -115,7 +115,7 @@ To set the switch color of the switchToggle use <em>**setSwitchColored(Color swi
 ```
 
 <p align=“center”>
-To set the true state text of the switchToggle use <em>**setTrueText(String trueText)**</em>.
+To set the true state text of the switchToggle use <em>setTrueText(String trueText)</em>.
 <br>
 </p>
 
@@ -124,7 +124,7 @@ To set the true state text of the switchToggle use <em>**setTrueText(String true
 ```
 
 <p align=“center”>
-To set the false state text of the switchToggle use <em>**setFalseText(String falseText)**</em>.
+To set the false state text of the switchToggle use <em>setFalseText(String falseText)</em>.
 <br>
 </p>
 
@@ -133,7 +133,7 @@ To set the false state text of the switchToggle use <em>**setFalseText(String fa
 ```
 
 <p align=“center”>
-To set the Transition type of the switchToggle use <em>**setTransitionType(TransitionType transitionType)**</em>.
+To set the Transition type of the switchToggle use <em>setTransitionType(TransitionType transitionType)</em>.
 <br>
 </p>
 
@@ -142,7 +142,7 @@ To set the Transition type of the switchToggle use <em>**setTransitionType(Trans
 ```
 
 <p align=“center”>
-To set the display direction of the switchToggle to a predefined setting use <em>**setDirection(Direction direction)**</em>.
+To set the display direction of the switchToggle to a predefined setting use <em>setDirection(Direction direction)</em>.
 <br>
 </p>
 
@@ -151,7 +151,7 @@ To set the display direction of the switchToggle to a predefined setting use <em
 ```
 
 <p align=“center”>
-To set the display direction of the switchToggle to a desired angle use **setDirectionAngle(Double degrees)**.
+To set the display direction of the switchToggle to a desired angle use <em>setDirectionAngle(Double degrees)</em>.
 <br>
 </p>
 
