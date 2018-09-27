@@ -46,7 +46,7 @@ import java.util.TimerTask;
  *
  * @author Matthew Ashley
  * @since Version 0.0.0.1
- * @version 1.0.0.3
+ * @version 2.0.0.1
  *
  */
 
@@ -163,6 +163,36 @@ public class SwitchToggle extends HBox {
      * @param transitionType contains the inputted TransitionType.
      */
     public void setTransitionType(TransitionType transitionType) {this.transType = transitionType;}
+
+
+    /**
+     * Sets the display direction of the Toggle Switch to the specified Direction type.
+      * @param direction contains the inputted Direction.
+     */
+    public void setDirection(Direction direction) {
+        if (direction == Direction.VerticalLeft) {
+            this.setRotate(90.0);
+        } else if (direction == Direction.VerticalRight) {
+            this.setRotate(-90.0);
+        }
+    }
+
+    /**
+     * Sets the display direction of the Toggle Switch to a specified angle within +-360.0 degrees of rotation.
+     * Method will throw an <code>AngleException</code> if <variable>degrees</variable> isn't within +-360.0.
+     * @param degrees contains the inputted degrees of rotation.
+     */
+    public void setDirectionAngle(Double degrees) {
+        if (degrees < -360.0 || degrees > 360.0) {
+            try {
+                throw new AngleException("Failure of inputted degrees: " + degrees + ".");
+            } catch (AngleException e) {
+                e.printStackTrace();
+            }
+        } else {
+            this.setRotate(degrees);
+        }
+    }
 
     /**
      * Builds a default Toggle Switch.
@@ -307,14 +337,13 @@ public class SwitchToggle extends HBox {
 
     /**
      * Sets the <code>TransitionType</code> of the Toggle Switch.
-     * @param transitionType is the specified transitionType for a
-     *                       customizable Toggle Switch.
+     * @param transitionType is the specified transitionType for a customizable Toggle Switch.
      */
     private void setTransition(TransitionType transitionType) {
         switch (transitionType) {
             case COMPRESS:
                 Timeline timeline = new Timeline();
-                timeline.getKeyFrames().addAll(new KeyFrame(Duration.ZERO, new KeyValue(prefWidthProperty(), 50)),
+                timeline.getKeyFrames().addAll(new KeyFrame(Duration.ZERO, new KeyValue(prefWidthProperty(), (this.label.getWidth() / 3.0))),
                         new KeyFrame(Duration.millis(500.0d), new KeyValue(prefWidthProperty(), this.switchWidth))
                 );
                 timeline.play();

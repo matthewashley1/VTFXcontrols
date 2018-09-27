@@ -1,3 +1,13 @@
 Manifest-Version: 1.0
+Created-By: Vern Technologies
+Build-Jdk: 10.0.2
+Specification-Title: VTFXcontrols
+Specification-Version: 2.0.0.1
+Specification-Vendor: Vern Technologies
+Implementation-Title: VTFXcontrols
+Implementation-Version: 2.0.0.1
+Implementation-Vendor: Vern Technologies
+
+
 
 

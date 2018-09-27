@@ -15,17 +15,16 @@
  */
 
 /*
- Created by Vern Technologies on 7/23/17. For package VTFXcontrols.
+ Created by Vern Technologies on 9/21/18. For package VTFXcontrols.
  */
 
 package VTFXcontrols;
 
 /**
- * <h1>StringInputException Class</h1>
- * Thrown to indicate that the inputted String to a method isn't in the right format.
+ * <h1>AngleException Class</h1>
+ * Thrown to indicate that the inputted Double to a method isn't within the ranges of +-360.0.
  * <p>
- * Typically used for the <code>addComasDouble(String checkAdd)</code> or <code>addComasInteger(String checkAdd)</code>
- * method in the Functions class.
+ * Typically used for the <code>setDirectionAngle(Double degrees)</code> method in the SwitchToggle class.
  *
  * @author Matthew Ashley
  * @since Version 0.0.0.1
@@ -33,19 +32,20 @@ package VTFXcontrols;
  *
  */
 
-public class StringInputException extends Exception {
+public class AngleException extends Exception {
 
     /**
-     * Constructs an <code>StringInputException</code> with the specified detailed message.
+     * Constructs an <code>AngleException</code> with the specified detailed message.
      * @param exception the detail message.
      */
-    public StringInputException(String exception) {
-        super(exception + " Inputted String not in the right condition");
+    public AngleException(String exception) {
+        super(exception + " Input for degrees isn't with the allowable ranges of 0.0 to 360.0.");
     }
 
     /**
-     * Constructs an <code>StringInputException</code> with no detailed message.
+     * Constructs an <code>AngleException</code> with no detailed message.
      */
-    public StringInputException() {super();}
-
+    public AngleException() {
+        super();
+    }
 }

@@ -79,7 +79,7 @@ To return the state of the switchToggle as boolean use <em>isSelected()</em>.
 ```
 
 <p align=“center”>
-To set the state of the switchToggle use <em>setSelected()</em>.
+To set the state of the switchToggle use <em>setSelected(boolean state)</em>.
 <br>
 </p>
 
@@ -88,7 +88,7 @@ To set the state of the switchToggle use <em>setSelected()</em>.
 ```
 
 <p align=“center”>
-To set the true state color of the switchToggle use <em>setTrueColored()</em>.
+To set the true state color of the switchToggle use <em>setTrueColored(Color trueColored)</em>.
 <br>
 </p>
 
@@ -97,7 +97,7 @@ To set the true state color of the switchToggle use <em>setTrueColored()</em>.
 ```
 
 <p align=“center”>
-To set the false state color of the switchToggle use <em>setFalseColored()</em>.
+To set the false state color of the switchToggle use <em>setFalseColored(Color falseColored)</em>.
 <br>
 </p>
 
@@ -106,7 +106,7 @@ To set the false state color of the switchToggle use <em>setFalseColored()</em>.
 ```
 
 <p align=“center”>
-To set the switch color of the switchToggle use <em>setSwitchColored()</em>.
+To set the switch color of the switchToggle use <em>setSwitchColored(Color switchColor)</em>.
 <br>
 </p>
 
@@ -115,7 +115,7 @@ To set the switch color of the switchToggle use <em>setSwitchColored()</em>.
 ```
 
 <p align=“center”>
-To set the true state text of the switchToggle use <em>setTrueText()</em>.
+To set the true state text of the switchToggle use <em>setTrueText(String trueText)</em>.
 <br>
 </p>
 
@@ -124,7 +124,7 @@ To set the true state text of the switchToggle use <em>setTrueText()</em>.
 ```
 
 <p align=“center”>
-To set the false state text of the switchToggle use <em>setFalseText()</em>.
+To set the false state text of the switchToggle use <em>setFalseText(String falseText)</em>.
 <br>
 </p>
 
@@ -133,13 +133,32 @@ To set the false state text of the switchToggle use <em>setFalseText()</em>.
 ```
 
 <p align=“center”>
-To set the Transition type of the switchToggle use <em>setTransitionType()</em>.
+To set the Transition type of the switchToggle use <em>setTransitionType(TransitionType transitionType)</em>.
 <br>
 </p>
 
 ```java
 	switchToggle.setTransitionType(TransitionType.COMPRESS);
 ```
+
+<p align=“center”>
+To set the display direction of the switchToggle to a predefined setting use <em>setDirection(Direction direction)</em>.
+<br>
+</p>
+
+```java
+	switchToggle.setDirection(Direction.VerticalLeft);
+```
+
+<p align=“center”>
+To set the display direction of the switchToggle to a desired angle use <em>setDirectionAngle(Double degrees)</em>.
+<br>
+</p>
+
+```java
+	switchToggle.setDirectionAngle(90.0);
+```
+
 
 
 
