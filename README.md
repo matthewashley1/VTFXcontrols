@@ -1,16 +1,15 @@
 
-[![GitHub license](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](http://www.apache.org/licenses/LICENSE-2.0)
-
 # VTFXcontrols
 
-_VTFXcontrols_ is a library for JavaFX that adds easy-to-use functions as well as a customizable ToggleSwitch (SwitchToggle). 
+[![GitHub license](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](http://www.apache.org/licenses/LICENSE-2.0)
+
+_VTFXcontrols_ is a library for JavaFX that adds easy-to-use functions as well as a customizable ToggleSwitch (SwitchToggle).
 
 SwitchToggle allows for customizing color, text, as-well-as Transition Effects.
 
 ___
 
-### Creating A New SwitchToggle
-
+## Creating A New SwitchToggle
 
 <p align=“center”>
 To use, create an instance of <em>SwitchToggle</em> and define its color, text, and Transition Effect.
@@ -18,7 +17,7 @@ To use, create an instance of <em>SwitchToggle</em> and define its color, text, 
 </p>
 
 ```java
-	SwitchToggle switchToggle = new SwitchToggle("ON", Color.web("#a7ef88"), "OFF", Color.web("#aeb0b2"), TransitionType.BUZZ);
+    SwitchToggle switchToggle = new SwitchToggle("ON", Color.web("#a7ef88"), "OFF", Color.web("#aeb0b2"), TransitionType.BUZZ);
 ```
 
 <p align=“center”>
@@ -26,10 +25,8 @@ Alternatively you can initialize a SwitchToggle with default settings.
 </p>
 
 ```java
-	SwitchToggle switchToggle = new SwitchToggle();
+    SwitchToggle switchToggle = new SwitchToggle();
 ```
-
-
 
 ### Different Transition Effects
 
@@ -57,7 +54,6 @@ There are 5 different Transition Effects that can be used, default(NONE), POP, C
 
 ![Demo](http://sotd.us/matthewashley/VTFXcontrols/BUZZ.gif)
 
-
 ### Other SwitchToggle Functionality
 
 <p align=“center”>
@@ -66,7 +62,7 @@ To evaluate the state of the SwitchToggle with a change Listener use <em>switchO
 </p>
 
 ```java
-	switchToggle.switchOnProperty().addListener((observable, oldValue, newValue) -> {};
+    switchToggle.switchOnProperty().addListener((observable, oldValue, newValue) -> {};
 ```
 
 <p align=“center”>
@@ -75,7 +71,7 @@ To return the state of the switchToggle as boolean use <em>isSelected()</em>.
 </p>
 
 ```java
-	boolean state = switchToggle.isSelected();
+    boolean state = switchToggle.isSelected();
 ```
 
 <p align=“center”>
@@ -84,7 +80,7 @@ To set the state of the switchToggle use <em>setSelected(boolean state)</em>.
 </p>
 
 ```java
-	switchToggle.setSelected(true);
+    switchToggle.setSelected(true);
 ```
 
 <p align=“center”>
@@ -93,7 +89,7 @@ To set the true state color of the switchToggle use <em>setTrueColored(Color tru
 </p>
 
 ```java
-	switchToggle.setTrueColored(Color.RED);
+    switchToggle.setTrueColored(Color.RED);
 ```
 
 <p align=“center”>
@@ -102,7 +98,7 @@ To set the false state color of the switchToggle use <em>setFalseColored(Color f
 </p>
 
 ```java
-	switchToggle.setFalseColored(Color.YELLOW);
+    switchToggle.setFalseColored(Color.YELLOW);
 ```
 
 <p align=“center”>
@@ -111,7 +107,7 @@ To set the switch color of the switchToggle use <em>setSwitchColored(Color switc
 </p>
 
 ```java
-	switchToggle.setSwitchColored(Color.BLACK);
+    switchToggle.setSwitchColored(Color.BLACK);
 ```
 
 <p align=“center”>
@@ -120,7 +116,7 @@ To set the true state text of the switchToggle use <em>setTrueText(String trueTe
 </p>
 
 ```java
-	switchToggle.setTrueText("TRUE");
+    switchToggle.setTrueText("TRUE");
 ```
 
 <p align=“center”>
@@ -129,7 +125,7 @@ To set the false state text of the switchToggle use <em>setFalseText(String fals
 </p>
 
 ```java
-	switchToggle.setFalseText("FALSE");
+    switchToggle.setFalseText("FALSE");
 ```
 
 <p align=“center”>
@@ -138,7 +134,7 @@ To set the Transition type of the switchToggle use <em>setTransitionType(Transit
 </p>
 
 ```java
-	switchToggle.setTransitionType(TransitionType.COMPRESS);
+    switchToggle.setTransitionType(TransitionType.COMPRESS);
 ```
 
 <p align=“center”>
@@ -147,7 +143,7 @@ To set the display direction of the switchToggle to a predefined setting use <em
 </p>
 
 ```java
-	switchToggle.setDirection(Direction.VerticalLeft);
+    switchToggle.setDirection(Direction.VerticalLeft);
 ```
 
 <p align=“center”>
@@ -156,11 +152,9 @@ To set the display direction of the switchToggle to a desired angle use <em>setD
 </p>
 
 ```java
-	switchToggle.setDirectionAngle(90.0);
+    switchToggle.setDirectionAngle(90.0);
 ```
 
+## License
 
-
-
-
-
+_VTFXControls is released under the [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0) license
