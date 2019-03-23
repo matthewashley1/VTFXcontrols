@@ -157,4 +157,4 @@ To set the display direction of the switchToggle to a desired angle use <em>setD
 
 ## License
 
-_VTFXControls is released under the [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0) license
+_VTFXcontrols_ is released under the [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0) license.
