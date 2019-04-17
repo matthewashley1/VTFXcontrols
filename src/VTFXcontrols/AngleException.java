@@ -38,8 +38,8 @@ public class AngleException extends Exception {
      * Constructs an <code>AngleException</code> with the specified detailed message.
      * @param exception the detail message.
      */
-    public AngleException(String exception) {
-        super(exception + " Input for degrees isn't with the allowable ranges of 0.0 to 360.0.");
+    AngleException(String exception) {
+        super(exception + " Input for degrees isn't within the allowable ranges of 0.0 to 360.0.");
     }
 
     /**
